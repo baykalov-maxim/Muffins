@@ -9,6 +9,6 @@ public interface CartService {
     void remove(long idCart, long idMuffin);
     void addCart(long id);
     boolean isPresent(long id);
-
     void setInCart(long id, List<MuffinDto> muffins);
+    List<MuffinDto> getMuffinsInCart(long id);
 }

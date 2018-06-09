@@ -89,4 +89,9 @@ public class CartServiceJpa implements CartService {
             });
         }
     }
+
+    @Override
+    public List<MuffinDto> getMuffinsInCart(long id) {
+        return MuffinDto.convert(cartJpaRepository.getOne(id).getMuffins());
+    }
 }

@@ -6,6 +6,7 @@ p {
      max-width: 900px;
      width: 70%;
      margin: 0 auto;
+    padding-bottom: 30px;
  }
 .header {
     border-bottom: 1px solid black;

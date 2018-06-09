@@ -26,8 +26,8 @@
                 <p class="item__desc" th:text="${muffin.getDesc()}"></p>
                 <div class="item__buy" th:switch="${muffin.isInCart()}">
                     <p class="item__price" th:text="'$' + ${muffin.getPrice()}"></p>
-                    <button th:case="${true}" class="item__basket btn" th:onclick="'removeFromCart(\'' + ${muffin.getId()} + '\');'">Remove from basket</button>
-                    <button th:case="${false}" class="item__basket btn" th:onclick="'addToCart(\'' + ${muffin.getId()} + '\');'">Add to basket</button>
+                    <button th:case="${true}" class="item__basket btn" th:onclick="'removeFromCart(\'' + ${muffin.getId()} + '\');'">Удалить</button>
+                    <button th:case="${false}" class="item__basket btn" th:onclick="'addToCart(\'' + ${muffin.getId()} + '\');'">В корзину</button>
                 </div>
             </div>
         </li>

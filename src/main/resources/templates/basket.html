@@ -16,8 +16,8 @@
         <a class="header__item header__basket header__item_active" href="/basket">Корзина</a>
     </nav>
 </header>
-<main class="main">
-    <form class="order">
+<main class="main" th:switch="${muffins.size() > 0}">
+    <form th:case="${true}" class="order">
         <h2 class="main__title">Ваш заказ</h2>
         <ul class="items" th:each="muffin : ${muffins}">
             <li class="item">
@@ -27,14 +27,18 @@
                     <p class="item__desc" th:text="${muffin.getDesc()}"></p>
                     <div class="item__buy" th:switch="${muffin.isInCart()}">
                         <p class="item__price" th:text="'$' + ${muffin.getPrice()}"></p>
-                        <button th:case="${true}" class="item__basket btn" th:onclick="'removeFromCart(\'' + ${muffin.getId()} + '\');'">Remove from basket</button>
-                        <button th:case="${false}" class="item__basket btn" th:onclick="'addToCart(\'' + ${muffin.getId()} + '\');'">Add to basket</button>
+                        <button th:case="${true}" class="item__basket btn" th:onclick="'removeFromCart(\'' + ${muffin.getId()} + '\');'">Удалить</button>
+                        <button th:case="${false}" class="item__basket btn" th:onclick="'addToCart(\'' + ${muffin.getId()} + '\');'">В корзину</button>
                     </div>
+                    <input hidden name="muffin_id" th:value="${muffin.getId()}">
                 </div>
             </li>
         </ul>
+        <input class="more-items btn" name="name" placeholder="Ваше имя">
+        <input class="more-items btn" name="phone" placeholder="Телефон">
         <input class="more-items btn" type="submit" value="Заказать">
     </form>
+    <h2 th:case="${false}" class="main__title">Ваша корзина пуста</h2>
 </main>
 </body>
 </html>

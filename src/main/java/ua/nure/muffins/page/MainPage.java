@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ua.nure.muffins.service.CartService;
 import ua.nure.muffins.service.MuffinService;
 
 import javax.servlet.http.Cookie;
@@ -15,12 +16,15 @@ import javax.servlet.http.HttpServletResponse;
 public class MainPage {
 
     private MuffinService muffinService;
+    private CartService cartService;
 
     @Autowired
     public MainPage(
-            @Qualifier("jdbcMuffin") MuffinService muffinService) {
+            @Qualifier("jdbcMuffin") MuffinService muffinService,
+            @Qualifier("jpaCart") CartService cartService) {
 
         this.muffinService = muffinService;
+        this.cartService = cartService;
     }
 
     @RequestMapping("/")
@@ -29,8 +33,19 @@ public class MainPage {
             @CookieValue(value = "session_id", defaultValue = "null") String sessionId,
             Model model
     ) {
-        if (sessionId.equals("null"))
-            response.addCookie(new Cookie("session_id", String.valueOf(System.currentTimeMillis() + (int) (Math.random() * 1000))));
+        long id;
+        if (sessionId.equals("null")) {
+            id = System.currentTimeMillis() + (int) (Math.random() * 1000);
+            response.addCookie(new Cookie("session_id", String.valueOf(id)));
+        } else {
+            id = new Long(sessionId);
+        }
+
+        if (!cartService.isPresent(id)) {
+            cartService.addCart(id);
+        }
+
+
 
         model.addAttribute("muffins", muffinService.getRandomMuffins());
         return "index";

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Muffins.com - Лучшие пончики твоего города</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/basket.js"></script>
+</head>
+<body class="page">
+<header class="header">
+    <h1 class="header__title">Лучшие пончики твоего города</h1>
+    <nav class="header__nav">
+        <a class="header__item header__item_active" href="/">Главная</a>
+        <a class="header__item" href="/store">Магазин</a>
+        <a class="header__item" href="/about">О нас</a>
+        <a class="header__item header__basket" href="/basket">Корзина</a>
+    </nav>
+</header>
+<main class="main">
+    <h2 class="main__title">Возможно вам понравится</h2>
+    <ul class="items" th:each="muffin : ${muffins}">
+        <li class="item">
+            <div class="item__img" th:style="'background-image:url(img/' + ${muffin.getImg()} + '.jpg);'"></div>
+            <div class="item__info">
+                <h3 class="item__name" th:text="${muffin.getName()}"></h3>
+                <p class="item__desc" th:text="${muffin.getDesc()}"></p>
+                <div class="item__buy">
+                    <p class="item__price" th:text="'$' + ${muffin.getPrice()}"></p>
+                    <button class="item__basket btn">Add to basket</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <a class="more-items btn" href="/store">Смотреть больше</a>
+</main>
+</body>
+</html>

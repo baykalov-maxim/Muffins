@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Muffins.com - Корзина</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="../static/js/basket.js"></script>
+</head>
+<body class="page">
+<header class="header">
+    <h1 class="header__title">Лучшие пончики твоего города</h1>
+    <nav class="header__nav">
+        <a class="header__item" href="/">Главная</a>
+        <a class="header__item" href="/store">Магазин</a>
+        <a class="header__item" href="/about">О нас</a>
+        <a class="header__item header__basket header__item_active" href="/basket">Корзина</a>
+    </nav>
+</header>
+<main class="main">
+    <form class="order">
+        <h2 class="main__title">Ваш заказ</h2>
+        <ul class="items">
+            <li class="item">
+                <div class="item__img" style="background-image: url('../static/img/1.jpg')"></div>
+                <div class="item__info">
+                    <h3 class="item__name">Супер-пончик</h3>
+                    <p class="item__desc">lore ipsum delores</p>
+                    <div class="item__buy">
+                        <p class="item__price">$100</p>
+                        <button class="item__basket btn">Add to basket</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <input class="more-items btn" type="submit" value="Заказать">
+    </form>
+</main>
+</body>
+</html>

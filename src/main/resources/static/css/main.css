@@ -1,0 +1,127 @@
+p {
+    margin: 0;
+    padding: 0;
+}
+.page {
+     max-width: 900px;
+     width: 70%;
+     margin: 0 auto;
+ }
+.header {
+    border-bottom: 1px solid black;
+    padding-bottom: 15px;
+}
+.header__title {
+    margin: 30px 0;
+    font-size: 30px;
+}
+.header__nav {
+    position: relative;
+}
+.header__item {
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+    transition: 400ms;
+    padding-bottom: 1px;
+}
+.header__item:not(:last-child) {
+    margin-right: 20px;
+}
+.header__item:hover {
+    color: darkgrey;
+}
+.header__item_active {
+    border-bottom: 1px solid black;
+}
+.header__item_active:hover {
+    border-bottom: 1px solid darkgrey;
+}
+.header__basket {
+    position: absolute;
+    right: 0;
+}
+.main {}
+.main__title {}
+.main-button:hover {
+    box-shadow: 1px 3px 10px rgba(0,0,0,0.2);
+}
+.items {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.item {
+    margin: 0;
+    padding: 10px 20px;
+    height: 200px;
+    transition: 300ms;
+    display: flex;
+}
+.item:hover {
+    box-shadow: 1px 3px 10px rgba(0,0,0,0.2);
+}
+.item:not(:last-child) {
+    margin-bottom: 15px;
+}
+.item__img {
+    margin-right: 20px;
+    height: 200px;
+    width: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.item__info {
+    position: relative;
+    width: calc(100% - 210px);
+}
+.item__name {}
+.item__desc {}
+.item__buy {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+}
+.item__price {
+    display: block;
+    font-size: 24px;
+}
+.item__basket {
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    height: fit-content;
+    font-size: 15px;
+    color: black;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+.more-items {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 30px auto;
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: block;
+    width: fit-content;
+}
+.btn {
+    outline:none;
+    border: none;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    transition: 300ms;
+}
+.btn:hover {
+    box-shadow: 1px 3px 10px rgba(0,0,0,0.2);
+}
+.btn:active {
+    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.2);
+}

@@ -3,11 +3,13 @@ package ua.nure.muffins.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import ua.nure.muffins.dto.MuffinDto;
 import ua.nure.muffins.model.Cart;
 import ua.nure.muffins.model.Muffin;
 import ua.nure.muffins.repository.CartJpaRepository;
 import ua.nure.muffins.repository.MuffinJpaRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,5 +77,16 @@ public class CartServiceJpa implements CartService {
     @Override
     public boolean isPresent(long id) {
         return cartJpaRepository.existsById(id);
+    }
+
+    @Override
+    public void setInCart(long id, List<MuffinDto> muffins) {
+        Cart cart = cartJpaRepository.getOne(id);
+        for (MuffinDto muffin : MuffinDto.convert(cart.getMuffins())) {
+            muffins.forEach(m -> {
+                if (m.getId().equals(muffin.getId()))
+                    m.setInCart(true);
+            });
+        }
     }
 }

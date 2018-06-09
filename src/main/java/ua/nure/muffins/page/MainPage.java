@@ -6,11 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ua.nure.muffins.dto.MuffinDto;
 import ua.nure.muffins.service.CartService;
 import ua.nure.muffins.service.MuffinService;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Controller
 public class MainPage {
@@ -45,9 +47,10 @@ public class MainPage {
             cartService.addCart(id);
         }
 
+        List<MuffinDto> muffins = muffinService.getRandomMuffins();
+        cartService.setInCart(id, muffins);
 
-
-        model.addAttribute("muffins", muffinService.getRandomMuffins());
+        model.addAttribute("muffins", muffins);
         return "index";
     }
 }

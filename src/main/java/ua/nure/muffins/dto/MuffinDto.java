@@ -13,6 +13,7 @@ public class MuffinDto {
     private String desc;
     private int price;
     private String img;
+    private boolean inCart;
 
     public MuffinDto(Long id, String name, String desc, int price, String img) {
         this.id = id;
@@ -74,5 +75,13 @@ public class MuffinDto {
         List<MuffinDto> muffins = new ArrayList<>();
         list.forEach(m -> muffins.add(new MuffinDto(m)));
         return muffins;
+    }
+
+    public boolean isInCart() {
+        return inCart;
+    }
+
+    public void setInCart(boolean inCart) {
+        this.inCart = inCart;
     }
 }

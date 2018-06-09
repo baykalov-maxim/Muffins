@@ -1,10 +1,12 @@
 package ua.nure.muffins.dto;
 
+import org.springframework.data.mongodb.core.mapping.Document;
 import ua.nure.muffins.model.Muffin;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Document
 public class MuffinDto {
     private Long id;
     private String name;

@@ -8,7 +8,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "t_muffin")
-//@Document
 public class Muffin {
 
     @Id
@@ -27,7 +26,9 @@ public class Muffin {
 
     @Column(name = "img_muffin")
     private String img;
-    //private List<MuffinInOrder> orders;
+
+    @ManyToMany(mappedBy = "muffins")
+    private List<Cart> carts;
 
 
     public Muffin(long id, String name, String desc, int price, String img) {
@@ -78,11 +79,11 @@ public class Muffin {
         this.img = img;
     }
 
-//    public List<MuffinInOrder> getOrders() {
-//        return orders;
-//    }
-//
-//    public void setOrders(List<MuffinInOrder> orders) {
-//        this.orders = orders;
-//    }
+    public List<Cart> getCart() {
+        return carts;
+    }
+
+    public void setCart(List<Cart> carts) {
+        this.carts = carts;
+    }
 }

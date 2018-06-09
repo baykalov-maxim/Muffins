@@ -67,6 +67,12 @@ CREATE TABLE IF NOT EXISTS `muffins`.`t_muffin_order` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
+CREATE TABLE `muffins`.`t_muffin_cart` (
+  `id_muffin_cart` INT NOT NULL AUTO_INCREMENT,
+  `id_cart` INT NOT NULL,
+  `id_muffin` INT NOT NULL,
+  PRIMARY KEY (`id_muffin_cart`));
+
 USE `muffins` ;
 
 -- -----------------------------------------------------

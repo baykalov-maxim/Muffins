@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 import ua.nure.muffins.dao.MuffinDao;
+import ua.nure.muffins.dto.MuffinDto;
 import ua.nure.muffins.model.Muffin;
 
 import java.sql.ResultSet;
@@ -18,10 +19,10 @@ public class MuffinDaoImpl implements MuffinDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private RowMapper<Muffin> mapper = new RowMapper<Muffin>() {
+    private RowMapper<MuffinDto> mapper = new RowMapper<MuffinDto>() {
         @Override
-        public Muffin mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return new Muffin(rs.getLong("id_muffin"),
+        public MuffinDto mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return new MuffinDto(rs.getLong("id_muffin"),
                     rs.getString("name_muffin"),
                     rs.getString("desc_muffin"),
                     rs.getInt("price_muffin"),
@@ -31,12 +32,12 @@ public class MuffinDaoImpl implements MuffinDao {
 
 
     @Override
-    public List<Muffin> getAll() {
+    public List<MuffinDto> getAll() {
         return jdbcTemplate.query("Select id_muffin, name_muffin, desc_muffin, price_muffin, img_muffin from t_muffin", mapper);
     }
 
     @Override
-    public List<Muffin> getRandom() {
+    public List<MuffinDto> getRandom() {
         return jdbcTemplate.query("call p_get_random_muffins()", mapper);
     }
 }

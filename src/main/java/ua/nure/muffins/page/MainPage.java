@@ -18,7 +18,7 @@ public class MainPage {
 
     @Autowired
     public MainPage(
-            @Qualifier("mongoMuffin") MuffinService muffinService) {
+            @Qualifier("jdbcMuffin") MuffinService muffinService) {
 
         this.muffinService = muffinService;
     }

@@ -1,10 +1,10 @@
 package ua.nure.muffins.dao;
 
-import ua.nure.muffins.model.Muffin;
+import ua.nure.muffins.dto.MuffinDto;
 
 import java.util.List;
 
 public interface MuffinDao {
-    List<Muffin> getAll();
-    List<Muffin> getRandom();
+    List<MuffinDto> getAll();
+    List<MuffinDto> getRandom();
 }

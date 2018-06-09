@@ -3,10 +3,12 @@ package ua.nure.muffins.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import ua.nure.muffins.dto.MuffinDto;
 import ua.nure.muffins.model.Muffin;
 import ua.nure.muffins.repository.MuffinJpaRepository;
 import ua.nure.muffins.service.MuffinService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,12 +23,12 @@ public class MuffinJpaService implements MuffinService {
     }
 
     @Override
-    public List<Muffin> getRandomMuffins() {
-        return muffinJpaRepository.getRandomMuffins();
+    public List<MuffinDto> getRandomMuffins() {
+        return MuffinDto.convert(muffinJpaRepository.getRandomMuffins());
     }
 
     @Override
-    public List<Muffin> getAll() {
-        return muffinJpaRepository.findAll();
+    public List<MuffinDto> getAll() {
+        return MuffinDto.convert(muffinJpaRepository.findAll());
     }
 }

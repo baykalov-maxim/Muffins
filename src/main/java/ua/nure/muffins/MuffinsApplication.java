@@ -13,7 +13,6 @@ import ua.nure.muffins.repository.MuffinMongoRepository;
 @Configuration
 @EnableJpaRepositories
 public class MuffinsApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(MuffinsApplication.class, args);
     }

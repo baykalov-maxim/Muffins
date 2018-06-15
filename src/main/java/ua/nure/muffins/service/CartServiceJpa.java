@@ -81,6 +81,9 @@ public class CartServiceJpa implements CartService {
     @Override
     public void setInCart(long id, List<MuffinDto> muffins) {
         Cart cart = cartJpaRepository.getOne(id);
+        if (cart.getMuffins() == null)
+            return;
+
         for (MuffinDto muffin : MuffinDto.convertToDto(cart.getMuffins())) {
             muffins.forEach(m -> {
                 if (m.getId().equals(muffin.getId()))

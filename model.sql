@@ -21,9 +21,9 @@ USE `muffins` ;
 -- Table `muffins`.`t_muffin`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `muffins`.`t_muffin` (
-  `id_muffin` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_muffin` INT(11) NOT NULL,
   `name_muffin` VARCHAR(2000) NOT NULL,
-  `desc_muffin` VARCHAR(45) NOT NULL,
+  `desc_muffin` VARCHAR(1000) NOT NULL,
   `price_muffin` INT(10) UNSIGNED NOT NULL,
   `img_muffin` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id_muffin`))
@@ -92,3 +92,12 @@ DELIMITER ;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+CREATE TABLE `muffins`.`t_cart` (
+  `id_cart` BIGINT(20) NOT NULL,
+  PRIMARY KEY (`id_cart`));
+
+
+ALTER TABLE `muffins`.`t_muffin_cart`
+CHANGE COLUMN `id_cart` `id_cart` BIGINT(20) NOT NULL ;

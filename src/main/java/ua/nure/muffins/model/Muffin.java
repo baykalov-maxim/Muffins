@@ -12,7 +12,6 @@ import java.util.Objects;
 public class Muffin {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id_muffin")
     private Long id;
 

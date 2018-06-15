@@ -26,4 +26,14 @@ public class MuffinJdbcService implements MuffinService {
     public List<MuffinDto> getAll() {
         return muffinDao.getAll();
     }
+
+    @Override
+    public void deleteAll() {
+        muffinDao.deleteAll();
+    }
+
+    @Override
+    public void saveAll(List<MuffinDto> muffins) {
+        throw new UnsupportedOperationException();
+    }
 }

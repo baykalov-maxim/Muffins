@@ -31,4 +31,14 @@ public class MuffinMongoService implements MuffinService {
     public List<MuffinDto> getAll() {
         return muffinMongoRepository.findAll();
     }
+
+    @Override
+    public void deleteAll() {
+        muffinMongoRepository.deleteAll();
+    }
+
+    @Override
+    public void saveAll(List<MuffinDto> muffins) {
+        muffinMongoRepository.saveAll(muffins);
+    }
 }

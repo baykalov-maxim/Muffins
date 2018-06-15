@@ -40,4 +40,9 @@ public class MuffinDaoImpl implements MuffinDao {
     public List<MuffinDto> getRandom() {
         return jdbcTemplate.query("call p_get_random_muffins()", mapper);
     }
+
+    @Override
+    public void deleteAll() {
+        jdbcTemplate.execute("DELETE FROM t_muffin WHERE id_muffin <> id_muffin + 1");
+    }
 }

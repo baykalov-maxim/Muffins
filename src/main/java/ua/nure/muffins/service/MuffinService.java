@@ -8,4 +8,6 @@ import java.util.List;
 public interface MuffinService {
     List<MuffinDto> getRandomMuffins();
     List<MuffinDto> getAll();
+    void deleteAll();
+    void saveAll(List<MuffinDto> muffins);
 }

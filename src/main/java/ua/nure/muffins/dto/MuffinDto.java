@@ -71,9 +71,15 @@ public class MuffinDto {
         this.img = img;
     }
 
-    public static List<MuffinDto> convert(List<Muffin> list) {
+    public static List<MuffinDto> convertToDto(List<Muffin> list) {
         List<MuffinDto> muffins = new ArrayList<>();
         list.forEach(m -> muffins.add(new MuffinDto(m)));
+        return muffins;
+    }
+
+    public static List<Muffin> convertToEntity(List<MuffinDto> list) {
+        List<Muffin> muffins = new ArrayList<>();
+        list.forEach(m -> muffins.add(new Muffin(m.id, m.name, m.desc, m.price, m.img)));
         return muffins;
     }
 

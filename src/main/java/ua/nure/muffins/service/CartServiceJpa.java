@@ -9,7 +9,6 @@ import ua.nure.muffins.model.Muffin;
 import ua.nure.muffins.repository.CartJpaRepository;
 import ua.nure.muffins.repository.MuffinJpaRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -82,7 +81,7 @@ public class CartServiceJpa implements CartService {
     @Override
     public void setInCart(long id, List<MuffinDto> muffins) {
         Cart cart = cartJpaRepository.getOne(id);
-        for (MuffinDto muffin : MuffinDto.convert(cart.getMuffins())) {
+        for (MuffinDto muffin : MuffinDto.convertToDto(cart.getMuffins())) {
             muffins.forEach(m -> {
                 if (m.getId().equals(muffin.getId()))
                     m.setInCart(true);
@@ -92,6 +91,6 @@ public class CartServiceJpa implements CartService {
 
     @Override
     public List<MuffinDto> getMuffinsInCart(long id) {
-        return MuffinDto.convert(cartJpaRepository.getOne(id).getMuffins());
+        return MuffinDto.convertToDto(cartJpaRepository.getOne(id).getMuffins());
     }
 }

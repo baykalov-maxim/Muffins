@@ -10,8 +10,7 @@ import ua.nure.muffins.service.MuffinService;
 
 import java.util.List;
 
-@Service
-@Qualifier("mongoMuffin")
+@Service("muffinMongo")
 public class MuffinMongoService implements MuffinService {
 
     private MuffinMongoRepository muffinMongoRepository;

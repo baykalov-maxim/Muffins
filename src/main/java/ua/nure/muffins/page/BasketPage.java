@@ -10,6 +10,7 @@ import ua.nure.muffins.dto.MuffinDto;
 import ua.nure.muffins.service.CartService;
 import ua.nure.muffins.service.MuffinService;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -21,12 +22,13 @@ public class BasketPage {
     private CartService cartService;
 
     @Autowired
-    public BasketPage(
-            @Qualifier("jdbcMuffin") MuffinService muffinService,
-            @Qualifier("jpaCart") CartService cartService) {
-
-        this.muffinService = muffinService;
+    public BasketPage(CartService cartService) {
         this.cartService = cartService;
+    }
+
+    @Resource(name = "${type.muffin}")
+    protected void setMuffinService(MuffinService muffinService) {
+        this.muffinService = muffinService;
     }
 
     @RequestMapping("/basket")

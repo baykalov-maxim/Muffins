@@ -11,8 +11,7 @@ import ua.nure.muffins.service.MuffinService;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-@Qualifier("jpaMuffin")
+@Service("muffinJPA")
 public class MuffinJpaService implements MuffinService {
 
     private MuffinJpaRepository muffinJpaRepository;
